@@ -1,0 +1,21 @@
+Introduction
+Triangulatetin.cmd is a METVue utility which requires a specific input file.  The NCDCCSV_TO_METVUETRITINTXT.PY program generates the required input file from NCDC CSV files collected from NOAA.  The program expedites the cumbersome task of parsing and accumulating precipitation totals and formatting an input file.  The program is capable of processing
+Methodology
+A python script called NCDCCSV_TO_METVUETRITINTXT.PY was written to generate the needed input file for triangulatetin.cmd.
+NCDCCSV_TO_METVUETRITINTXT.PY was written to accomplish the follow steps:
+1.Determine all the .csv files in the NCDCCSV_TO_METVUETRITINTXT.PY current directory 
+2.Parse each row in each of the csv files
+3.Accumulate the total rainfall at each gage for a storm event.
+4.Convert hundredths of inches to inches. 
+5.Process A, P and T flags, and skip rows with all other flags.
+6.Write the gage name, latitude, longitude, accumulated precipitation, short gage name in a metvuetritintxt file.
+7.Write gage name and associated skipped flag to flag_skipped.txt file for user review.
+8.Inform user when finished and number of csv files processed.
+Application
+To utilize this program flow these steps:
+1.Download NCDC CSV files in standard units containing daily or hourly precipitation for multiple gages within a region of interest.  
+2.Place the NCDC CSV files in the NCDCCSV_TO_METVUETRITINTXT.PY directory.
+3.Run python script with command line or graphical user interface.
+4.Review flags_skipped.txt to ensure data was not to be accumulated.
+5.Run triangulate_tin.cmd and point to the created input file metvuetritin.txt
+6.Result will be an output.rf file that can be loaded into METVue.
